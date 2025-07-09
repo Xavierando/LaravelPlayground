@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Database\Seeders\BookingSeeder;
+use Database\Seeders\ServiceSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,5 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(5)->create();
         $this->call(ServiceSeeder::class);
+        $this->call(BookingSeeder::class);
     }
 }

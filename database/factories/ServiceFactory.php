@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Booking;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,5 +24,10 @@ class ServiceFactory extends Factory
             'price' => fake()->numberBetween(50, 100),
             'duration' => fake()->randomElement([1800, 3600, 5400, 7200]),
         ];
+    }
+
+    public function bookings(): Collection
+    {
+        return $this->hasMany(Booking::class);
     }
 }
