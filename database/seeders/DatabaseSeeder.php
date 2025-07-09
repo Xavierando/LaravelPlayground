@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Database\Seeders\BookingSeeder;
-use Database\Seeders\ServiceSeeder;
 
 class DatabaseSeeder extends Seeder
 {

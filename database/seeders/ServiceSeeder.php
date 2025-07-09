@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Service;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ServiceSeeder extends Seeder
 {
@@ -64,7 +63,7 @@ class ServiceSeeder extends Seeder
             ],
         ];
 
-        //Service::insert($Service);
+        // Service::insert($Service);
         Service::Factory(9)->create();
     }
 }
