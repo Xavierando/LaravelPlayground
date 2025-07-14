@@ -45,3 +45,7 @@ function something()
 {
     // ..
 }
+
+uses(
+    Tests\TestCase::class,
+)->in('Unit');
