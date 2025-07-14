@@ -14,6 +14,8 @@ final class Abilities
 
     public const DeleteService = 'service:delete';
 
+    public const IndexAllBooking = 'booking:indexAll';
+
     public const CreateBooking = 'booking:create';
 
     public const UpdateBooking = 'booking:update';
@@ -44,6 +46,7 @@ final class Abilities
                 self::UpdateService,
                 self::ReplaceService,
                 self::DeleteService,
+                self::IndexAllBooking,
                 self::CreateBooking,
                 self::UpdateBooking,
                 self::ReplaceBooking,
