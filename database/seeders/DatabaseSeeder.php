@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         User::factory(5)->create();
         $this->call(ServiceSeeder::class);
         $this->call(BookingSeeder::class);
+        $this->call(WorkingTimeSeeder::class);
     }
 }
