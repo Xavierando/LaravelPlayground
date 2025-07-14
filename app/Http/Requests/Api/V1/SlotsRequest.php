@@ -18,14 +18,15 @@ class SlotsRequest extends FormRequest
     public function validator()
     {
         return Validator::make(
-            ['date' => $this->route('date')], 
+            ['date' => $this->route('date')],
             ['date' => 'required|date|after:today']
         );
     }
 
-    public function messages() {
+    public function messages()
+    {
         return [
-            'date' => 'The date value is invalid. Please insert a date greater then today'
+            'date' => 'The date value is invalid. Please insert a date greater then today',
         ];
     }
 }

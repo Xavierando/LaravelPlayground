@@ -2,18 +2,15 @@
 
 namespace App\Http\Requests\Api\V1;
 
-use Illuminate\Foundation\Http\FormRequest;
-
 class StoreBookingRequest extends BaseBookingRequest
 {
-
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {    
+    {
         $rules = [
             'data' => 'required|array',
             'data.attributes' => 'required|array',
@@ -23,7 +20,7 @@ class StoreBookingRequest extends BaseBookingRequest
             'data.attributes.user' => 'required|exist:user,id',
             'data.attributes.service' => 'required|exist:service,id',
         ];
-        
+
         return $rules;
     }
 }

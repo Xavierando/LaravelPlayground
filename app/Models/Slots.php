@@ -2,12 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
 class Slots
 {
- 
     public \DateTimeImmutable $date {
         get {
             return $this->date;
@@ -23,7 +19,7 @@ class Slots
         }
     }
 
-    public  $service_id {
+    public $service_id {
         get {
             return $this->service->id;
         }
@@ -50,14 +46,14 @@ class Slots
         $this->date = $givendate;
     }
 
-    public function FreeSlots():array
+    public function FreeSlots(): array
     {
 
         $service = $service ?? $this->service;
         $givendate = $givendate ?? $this->date;
 
         $intervalMinuteInteger = 30;
-        $interval = \DateInterval::createFromDateString(str($intervalMinuteInteger) . ' minutes');
+        $interval = \DateInterval::createFromDateString(str($intervalMinuteInteger).' minutes');
         $dateFormatted = $givendate->format('Y-m-d');
         $timeToAlot = $service->timerange;
 
@@ -66,22 +62,22 @@ class Slots
             ->get()
             ->map(function ($v) use ($dateFormatted) {
                 return [
-                    'starttime' => new \DateTime($dateFormatted . $v->starttime),
-                    'endtime' => new \DateTime($dateFormatted . $v->endtime),
+                    'starttime' => new \DateTime($dateFormatted.$v->starttime),
+                    'endtime' => new \DateTime($dateFormatted.$v->endtime),
                 ];
             });
 
         $Bookings = Booking::where('s_date', $dateFormatted)->get()->map(function ($booking) {
             $result = [];
-            $result['starttime'] = new \DateTimeImmutable($booking['s_date'] . ' ' . $booking['s_time']);
+            $result['starttime'] = new \DateTimeImmutable($booking['s_date'].' '.$booking['s_time']);
             $result['endtime'] = $result['starttime']->add(
-                \DateInterval::createFromDateString(round(Service::find($booking->user_id)->timerange / 60) . ' minutes')
+                \DateInterval::createFromDateString(round(Service::find($booking->user_id)->timerange / 60).' minutes')
             );
 
             return $result;
         });
 
-        $checkTime = (new \DateTimeImmutable($dateFormatted . ' 00:00:00'))
+        $checkTime = (new \DateTimeImmutable($dateFormatted.' 00:00:00'))
             ->setTime(
                 $workingTimeRanges[0]['starttime']->format('H'),
                 intval($workingTimeRanges[0]['starttime']->format('i'))
@@ -118,7 +114,7 @@ class Slots
     private static function isInsideRange($startTime, $timeToAlot, $Range): bool
     {
         $endTime = new \DateTime($startTime->add(
-            \DateInterval::createFromDateString(round($timeToAlot / 60) . ' minutes')
+            \DateInterval::createFromDateString(round($timeToAlot / 60).' minutes')
         )->format(\DateTime::COOKIE));
 
         return $Range['starttime'] <= $startTime && $endTime <= $Range['endtime'];
@@ -138,9 +134,9 @@ class Slots
     private static function isOutsideRange($startTime, $timeToAlot, $Range): bool
     {
         $endTime = new \DateTime($startTime->add(
-            \DateInterval::createFromDateString(round($timeToAlot / 60) . ' minutes')
+            \DateInterval::createFromDateString(round($timeToAlot / 60).' minutes')
         )->format(\DateTime::COOKIE));
 
         return $endTime <= $Range['starttime'] || $Range['endtime'] <= $startTime;
-    }   
+    }
 }

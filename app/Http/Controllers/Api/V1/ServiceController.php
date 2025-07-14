@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\Api\V1\ApiController;
 use App\Http\Filters\V1\ServiceFilter;
 use App\Http\Requests\Api\V1\StoreServiceRequest;
 use App\Http\Resources\V1\ServiceResource;
@@ -13,6 +12,7 @@ use Illuminate\Http\Request;
 class ServiceController extends ApiController
 {
     protected $policyClass = ServicePolicy::class;
+
     /**
      * Display a listing of the resource.
      */
@@ -30,7 +30,7 @@ class ServiceController extends ApiController
             return new ServiceResource(Service::create($request->mappedAttributes()));
         }
 
-        return $this->notAuthorized('Unauthorized');  
+        return $this->notAuthorized('Unauthorized');
     }
 
     /**
@@ -48,6 +48,7 @@ class ServiceController extends ApiController
     {
         if ($this->isAbleTo('update', $service)) {
             $service->update($request->mappedAttributes());
+
             return new ServiceResource($service);
         }
 
@@ -57,7 +58,7 @@ class ServiceController extends ApiController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy( Service $service)
+    public function destroy(Service $service)
     {
         if ($this->isAbleTo('delete', $service)) {
             $service->delete();

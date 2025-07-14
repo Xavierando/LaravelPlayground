@@ -17,7 +17,7 @@ class Service extends Model
         'title',
         'description',
         'price',
-        'duration'
+        'duration',
     ];
 
     public function bookings(): HasMany

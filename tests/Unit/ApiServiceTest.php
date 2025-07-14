@@ -3,7 +3,6 @@
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Testing\Fluent\AssertableJson;
 
 uses(RefreshDatabase::class);
 
@@ -55,9 +54,9 @@ test('admin user can create a new service', function () {
                     'title' => 'new service',
                     'description' => 'descrption of new service',
                     'price' => '10',
-                    'duration' => 3600
-                ]
-            ]
+                    'duration' => 3600,
+                ],
+            ],
         ]);
 
     $response
@@ -67,7 +66,6 @@ test('admin user can create a new service', function () {
         ->assertJsonPath('data.attributes.price', '10')
         ->assertJsonPath('data.attributes.duration', 60);
 });
-
 
 test('auth user can not create a new service', function () {
 
@@ -81,11 +79,11 @@ test('auth user can not create a new service', function () {
                     'title' => 'new service',
                     'description' => 'descrption of new service',
                     'price' => '10',
-                    'duration' => 3600
-                ]
-            ]
+                    'duration' => 3600,
+                ],
+            ],
         ]);
-    //var_dump($response->json());
+    // var_dump($response->json());
     $response
         ->assertStatus(200)
         ->assertJsonPath('errors.status', 401)
@@ -108,7 +106,6 @@ test('auth user can not delete a service', function () {
         ->assertJsonPath('errors.status', 401)
         ->assertJsonPath('errors.message', 'Unauthorized');
 });
-
 
 test('admin user can delete a service', function () {
 

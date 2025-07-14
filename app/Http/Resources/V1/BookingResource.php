@@ -20,30 +20,30 @@ class BookingResource extends JsonResource
             'attributes' => [
                 'date' => $this->s_date,
                 'time' => $this->s_time,
-                'payed' => $this->payed
+                'payed' => $this->payed,
             ],
             'includes' => new ServiceResource($this->whenLoaded('service')),
             'relationships' => [
                 'user' => [
                     'data' => [
                         'type' => 'user',
-                        'id' => $this->user_id
-                    ]
+                        'id' => $this->user_id,
+                    ],
                 ],
                 'service' => [
 
                     'data' => [
                         'type' => 'user',
-                        'id' => $this->user_id
+                        'id' => $this->user_id,
                     ],
                     'links' => [
-                        'self' => route('api.services.show', ['service' => $this->service_id])
-                    ]
-                ]
+                        'self' => route('api.services.show', ['service' => $this->service_id]),
+                    ],
+                ],
             ],
             'links' => [
-                'self' => route('api.bookings.show', ['booking' => $this->id])
-            ]
+                'self' => route('api.bookings.show', ['booking' => $this->id]),
+            ],
         ];
     }
 }

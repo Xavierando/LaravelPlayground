@@ -15,13 +15,14 @@ class BookingPolicy
     {
         //
     }
+
     public function indexAll(User $user)
     {
         if ($user->userCan(Abilities::IndexAllBooking)) {
             return true;
         }
 
-        return  false;
+        return false;
     }
 
     public function delete(User $user, Booking $booking)
@@ -36,7 +37,8 @@ class BookingPolicy
         ) {
             return true;
         }
-        return  false;
+
+        return false;
     }
 
     public function replace(User $user)
@@ -56,7 +58,8 @@ class BookingPolicy
         ) {
             return true;
         }
-        return  false;
+
+        return false;
     }
 
     public function update(User $user, Booking $booking)
@@ -71,6 +74,7 @@ class BookingPolicy
         ) {
             return true;
         }
-        return  false;
+
+        return false;
     }
 }

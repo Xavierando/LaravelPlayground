@@ -23,8 +23,8 @@ class SlotsResource extends JsonResource
             ],
             'includes' => new ServiceResource(Service::find($this->service_id)),
             'links' => [
-                'self' => route('api.services.slots',['service' => $this->service_id,'date' => $this->dateFormatted])
-            ]
+                'self' => route('api.services.slots', ['service' => $this->service_id, 'date' => $this->dateFormatted]),
+            ],
         ];
     }
 }

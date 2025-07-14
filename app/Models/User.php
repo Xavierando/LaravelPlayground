@@ -58,12 +58,13 @@ class User extends Authenticatable
 
     /**
      * check for user permission.
-     * @param mixed 
-     * @return bool
+     *
+     * @param mixed
      */
     public function userCan($ability): bool
     {
         $abilities = Abilities::getAbilities($this);
-        return in_array($ability,$abilities,true);
+
+        return in_array($ability, $abilities, true);
     }
 }

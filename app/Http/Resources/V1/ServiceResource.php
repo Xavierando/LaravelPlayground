@@ -21,12 +21,12 @@ class ServiceResource extends JsonResource
                 'title' => $this->title,
                 'description' => $this->description,
                 'price' => $this->price,
-                'duration' =>$this->duration/60
+                'duration' => $this->duration / 60,
             ],
             'includes' => '',
             'links' => [
-                'self' => route('api.services.show',['service' => $this->id])
-            ]
+                'self' => route('api.services.show', ['service' => $this->id]),
+            ],
         ];
     }
 }

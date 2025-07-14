@@ -14,7 +14,8 @@ class BaseServiceRequest extends FormRequest
         return true;
     }
 
-    public function mappedAttributes(array $otherAttributes = []) {
+    public function mappedAttributes(array $otherAttributes = [])
+    {
         $attributeMap = array_merge([
             'data.attributes.title' => 'title',
             'data.attributes.description' => 'description',
@@ -34,9 +35,10 @@ class BaseServiceRequest extends FormRequest
         return $attributesToUpdate;
     }
 
-    public function messages() {
+    public function messages()
+    {
         return [
-            'data.attributes.duration' => 'The data.attributes.duration value is invalid. Please insert a positive integer of minutes'
+            'data.attributes.duration' => 'The data.attributes.duration value is invalid. Please insert a positive integer of minutes',
         ];
     }
 }
