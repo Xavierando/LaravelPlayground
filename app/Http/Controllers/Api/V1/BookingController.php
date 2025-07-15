@@ -45,7 +45,13 @@ class BookingController extends ApiController
      */
     public function show(Booking $booking)
     {
+        if ($this->isAbleTo('indexAll', Booking::class)) {
         return new BookingResource($booking);
+        }
+
+        if ($this->isAbleTo('show', $booking)) {
+            return new BookingResource($booking);
+        }        
     }
 
     /**

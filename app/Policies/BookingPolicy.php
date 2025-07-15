@@ -41,6 +41,14 @@ class BookingPolicy
         return false;
     }
 
+    public function show(User $user, Booking $booking)
+    {
+        if ($booking->user_id == $user->id) {
+            return true;
+        }
+
+        return false;
+    }
     public function replace(User $user)
     {
         return $user->userCan(Abilities::ReplaceBooking);
